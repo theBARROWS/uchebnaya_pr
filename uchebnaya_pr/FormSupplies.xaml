@@ -35,6 +35,11 @@
         </StackPanel>
         <TextBlock>Цена</TextBlock>
         <TextBox x:Name="priceTB" Style="{StaticResource SmallTextBoxStyle}"></TextBox>
-        <Button Click="Button_Click">Сохранить</Button>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button Click="Button_Click" HorizontalAlignment="Center">Сохранить</Button>
+        </Grid>
     </StackPanel>
 </Window>

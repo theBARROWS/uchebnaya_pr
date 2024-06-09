@@ -26,6 +26,11 @@
         <TextBox x:Name="pr4" IsReadOnly="True" Style="{StaticResource SmallTextBoxStyle}"></TextBox>
         <TextBlock>Размер отчислений компании</TextBlock>
         <TextBox x:Name="pr5" IsReadOnly="True" Style="{StaticResource SmallTextBoxStyle}"></TextBox>
-        <Button Click="Button_Click">ОК</Button>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button Click="Button_Click" HorizontalAlignment="Center">Подвердить</Button>
+        </Grid>
     </StackPanel>
 </Window>

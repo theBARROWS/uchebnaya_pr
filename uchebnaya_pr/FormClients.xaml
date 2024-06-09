@@ -29,6 +29,11 @@
         <TextBox x:Name="phoneTextBox" Style="{StaticResource SmallTextBoxStyle}"></TextBox>
         <TextBlock>Почта</TextBlock>
         <TextBox x:Name="emailTextBox" Style="{StaticResource SmallTextBoxStyle}"></TextBox>
-        <Button Click="Button_Click">Сохранить</Button>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button Click="Button_Click" HorizontalAlignment="Center">Сохранить</Button>
+        </Grid>
     </StackPanel>
 </Window>

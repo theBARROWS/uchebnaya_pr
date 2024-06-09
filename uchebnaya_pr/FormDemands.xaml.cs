@@ -105,17 +105,93 @@ namespace UCH_PR
                     return;
                 }
 
-                if (!double.TryParse(minar.Text, out double minArea) || minArea < 0 ||
-                    !double.TryParse(maxar.Text, out double maxArea) || maxArea < 0 ||
-                    !int.TryParse(minfloor.Text, out int minFloor) || minFloor < 0 ||
-                    !int.TryParse(maxfloor.Text, out int maxFloor) || maxFloor < 0 ||
-                    !int.TryParse(minpr.Text, out int minPrice) || minPrice <= 0 ||
-                    !int.TryParse(maxpr.Text, out int maxPrice) || maxPrice <= 0 ||
-                    !int.TryParse(minroom.Text, out int minRooms) || minRooms < 0 ||
-                    !int.TryParse(maxroom.Text, out int maxRooms) || maxRooms < 0)
+                double? minArea = null;
+                double? maxArea = null;
+                int? minFloor = null;
+                int? maxFloor = null;
+                int? minPrice = null;
+                int? maxPrice = null;
+                int? minRooms = null;
+                int? maxRooms = null;
+
+                if (!string.IsNullOrEmpty(minar.Text))
                 {
-                    MessageBox.Show("Введите корректные значения для площади, этажей, цены и количества комнат.");
-                    return;
+                    if (!double.TryParse(minar.Text, out double minAreaValue) || minAreaValue < 0)
+                    {
+                        MessageBox.Show("Введите корректное значение для минимальной площади.");
+                        return;
+                    }
+                    minArea = minAreaValue;
+                }
+
+                if (!string.IsNullOrEmpty(maxar.Text))
+                {
+                    if (!double.TryParse(maxar.Text, out double maxAreaValue) || maxAreaValue < 0)
+                    {
+                        MessageBox.Show("Введите корректное значение для максимальной площади.");
+                        return;
+                    }
+                    maxArea = maxAreaValue;
+                }
+
+                if (!string.IsNullOrEmpty(minfloor.Text))
+                {
+                    if (!int.TryParse(minfloor.Text, out int minFloorValue) || minFloorValue < 0)
+                    {
+                        MessageBox.Show("Введите корректное значение для минимального этажа.");
+                        return;
+                    }
+                    minFloor = minFloorValue;
+                }
+
+                if (!string.IsNullOrEmpty(maxfloor.Text))
+                {
+                    if (!int.TryParse(maxfloor.Text, out int maxFloorValue) || maxFloorValue < 0)
+                    {
+                        MessageBox.Show("Введите корректное значение для максимального этажа.");
+                        return;
+                    }
+                    maxFloor = maxFloorValue;
+                }
+
+                if (!string.IsNullOrEmpty(minpr.Text))
+                {
+                    if (!int.TryParse(minpr.Text, out int minPriceValue) || minPriceValue <= 0)
+                    {
+                        MessageBox.Show("Введите корректное значение для минимальной цены.");
+                        return;
+                    }
+                    minPrice = minPriceValue;
+                }
+
+                if (!string.IsNullOrEmpty(maxpr.Text))
+                {
+                    if (!int.TryParse(maxpr.Text, out int maxPriceValue) || maxPriceValue <= 0)
+                    {
+                        MessageBox.Show("Введите корректное значение для максимальной цены.");
+                        return;
+                    }
+                    maxPrice = maxPriceValue;
+                }
+
+                if (!string.IsNullOrEmpty(minroom.Text))
+                {
+                    if (!int.TryParse(minroom.Text, out int minRoomsValue) || minRoomsValue < 0)
+                    {
+                        MessageBox.Show("Введите корректное значение для минимального количества комнат.");
+                        return;
+                    }
+                    minRooms = minRoomsValue;
+                }
+
+                if (!string.IsNullOrEmpty(maxroom.Text))
+                {
+                    if (!int.TryParse(maxroom.Text, out int maxRoomsValue) || maxRoomsValue < 0)
+                    {
+                        MessageBox.Show("Введите корректное значение для максимального количества комнат.");
+                        return;
+                    }
+                    maxRooms = maxRoomsValue;
                 }
 
 

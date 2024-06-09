@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:uchebnaya_pr"
         mc:Ignorable="d"
-        Title="esoft" Height="500" Width="900" MinHeight="500" MinWidth="900"
+        Title="esoft" Height="500" Width="1100" MinHeight="500" MinWidth="1100"
         Icon="esoft16.ico">
     <!--<Window.Resources>
         --><!-- Стиль для TabControl --><!--
@@ -31,7 +31,7 @@
     </Window.Resources>-->
     <Window.Resources>
         <Style x:Key="paddingillusion">
-            <Setter Property="Control.FontFamily" Value="Verdana" />
+            <Setter Property="Control.FontFamily" Value="Roboto" />
             <Setter Property="Control.Foreground" Value="Black" />
             <Setter Property="Control.Margin" Value="15" />
         </Style>
@@ -89,7 +89,8 @@
         </Style>
 
         <Style TargetType="TabControl">
-            <Setter Property="Foreground" Value="#FF636363" />
+            <!--<Setter Property="Foreground" Value="#FF636363" />-->
+            <Setter Property="Foreground" Value="#37474f" />
             <Setter Property="Background" Value="#FFEBEBEB" />
             <Setter Property="Padding" Value="10" />
             <Setter Property="FontSize" Value="12" />
@@ -154,6 +155,12 @@
             </Setter>
         </Style>
 
+        <Style TargetType="DataGridRow">
+            <Setter Property="FontWeight" Value="Normal"/>
+            <Setter Property="Foreground" Value="#546e7a"/>
+            <Setter Property="Height" Value="30"></Setter>
+        </Style>
+
     </Window.Resources>
     <DockPanel>
 
@@ -186,6 +193,9 @@
                             <DataGridTextColumn Header="Квартира" MinWidth="50" Width="*" Binding="{Binding Address_Number}" />
                             <DataGridTextColumn Header="Широта" MinWidth="50" Width="*" Binding="{Binding Coordinate_latitude}" />
                             <DataGridTextColumn Header="Долгота" MinWidth="50" Width="*" Binding="{Binding Coordinate_longtitude}" />
+                            <DataGridTextColumn Header="Этаж" MinWidth="50" Width="*" Binding="{Binding Floors}" />
+                            <DataGridTextColumn Header="Комнаты" MinWidth="50" Width="*" Binding="{Binding Rooms}" />
+                            <DataGridTextColumn Header="Площадь" MinWidth="50" Width="*" Binding="{Binding TotalArea}" />
                         </DataGrid.Columns>
 
                     </DataGrid>
@@ -325,15 +335,21 @@
                                HorizontalGridLinesBrush="#CFD8DC"
                                AlternatingRowBackground="#F7F9F9">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="ID" MinWidth="50" Width="*" Binding="{Binding Id}" />
+                            <DataGridTextColumn Header="ID" MinWidth="20" Width="*" Binding="{Binding Id}" />
                             <DataGridTextColumn Header="Клиент" MinWidth="50" Width="*" Binding="{Binding ClientId}" />
-                            <DataGridTextColumn Header="Тип" MinWidth="50" Width="*" Binding="{Binding type.Name}" />
+                            <DataGridTextColumn Header="Тип" MinWidth="30" Width="*" Binding="{Binding type.Name}" />
                             <DataGridTextColumn Header="Город" MinWidth="50" Width="*" Binding="{Binding Address_City}" />
                             <DataGridTextColumn Header="Улица" MinWidth="50" Width="*" Binding="{Binding Address_Street}" />
-                            <DataGridTextColumn Header="Дом" MinWidth="50" Width="*" Binding="{Binding Address_House}" />
+                            <DataGridTextColumn Header="Дом" MinWidth="20" Width="*" Binding="{Binding Address_House}" />
                             <DataGridTextColumn Header="Квартира" MinWidth="50" Width="*" Binding="{Binding Address_Number}" />
-                            <DataGridTextColumn Header="Мин. цена" MinWidth="75" Width="*" Binding="{Binding MinPrice}" />
-                            <DataGridTextColumn Header="Макс. цена" MinWidth="75" Width="*" Binding="{Binding MaxPrice}" />
+                            <DataGridTextColumn Header="Мин. эт" MinWidth="20" Width="*" Binding="{Binding MinFloor}" />
+                            <DataGridTextColumn Header="Макс. эт" MinWidth="20" Width="*" Binding="{Binding MaxFloor}" />
+                            <DataGridTextColumn Header="Мин. км" MinWidth="20" Width="*" Binding="{Binding MinRooms}" />
+                            <DataGridTextColumn Header="Макс. км" MinWidth="20" Width="*" Binding="{Binding MaxRooms}" />
+                            <DataGridTextColumn Header="Мин. пл" MinWidth="20" Width="*" Binding="{Binding MinArea}" />
+                            <DataGridTextColumn Header="Макс. пл" MinWidth="20" Width="*" Binding="{Binding MaxArea}" />
+                            <DataGridTextColumn Header="Мин. цена" MinWidth="20" Width="*" Binding="{Binding MinPrice}" />
+                            <DataGridTextColumn Header="Макс. цена" MinWidth="20" Width="*" Binding="{Binding MaxPrice}" />
                         </DataGrid.Columns>
 
                     </DataGrid>

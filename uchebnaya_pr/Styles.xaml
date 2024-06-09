@@ -11,7 +11,7 @@
         <Setter Property="Margin" Value="0 15" />
         <Setter Property="BorderBrush" Value="LightGray"/>
         <Setter Property="Background" Value="White"/>
-        <Setter Property="Foreground" Value="Gray"/>
+        <Setter Property="Foreground" Value="#546E7A"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="Template">
             <Setter.Value>
@@ -28,18 +28,18 @@
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="BorderBrush" Value="Gray"/>
-                <Setter Property="Foreground" Value="Black"/>
+                <Setter Property="Foreground" Value="#37474f"/>
             </Trigger>
             <Trigger Property="IsFocused" Value="True">
                 <Setter Property="BorderBrush" Value="SkyBlue"/>
                 <Setter Property="Background" Value="White"/>
-                <Setter Property="Foreground" Value="Black"/>
+                <!--<Setter Property="Foreground" Value="Black"/>-->
             </Trigger>
             <DataTrigger Binding="{Binding Text.Length, RelativeSource={RelativeSource Self}}" Value="0">
                 <Setter Property="Foreground" Value="Gray"/>
             </DataTrigger>
             <DataTrigger Binding="{Binding Text.Length, RelativeSource={RelativeSource Self}}" Value="1">
-                <Setter Property="Foreground" Value="Black"/>
+                <Setter Property="Foreground" Value="#37474f"/>
             </DataTrigger>
         </Style.Triggers>
     </Style>
@@ -80,7 +80,9 @@
         <Setter Property="Background" Value="White"/>
         <Setter Property="BorderBrush" Value="#D3D3D3"/>
         <Setter Property="BorderThickness" Value="1"/>
-        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Foreground" Value="#37474f"/>
+        <!--<Setter Property="Foreground" Value="Black"/>-->
         <Setter Property="FontSize" Value="14"/>
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
@@ -93,5 +95,14 @@
                 <Setter Property="Foreground" Value="#ADADAD"/>
             </Trigger>
         </Style.Triggers>
+    </Style>
+
+    <Style TargetType="Label">
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Foreground" Value="#37474f"/>
+    </Style>
+    <Style TargetType="TextBlock">
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Foreground" Value="#37474f"/>
     </Style>
 </ResourceDictionary>

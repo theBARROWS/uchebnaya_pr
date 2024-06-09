@@ -4,6 +4,8 @@
              xmlns:local="clr-namespace:uchebnaya_pr"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <Style TargetType="Label">
+            <Setter Property="FontFamily" Value="fonts/Roboto-Regular.tff #Roboto-Regular"/>
+        </Style>
     </Application.Resources>
 </Application>

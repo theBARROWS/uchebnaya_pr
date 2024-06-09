@@ -194,6 +194,18 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>DB.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <Resource Include="fonts\Roboto-Black.ttf" />
+    <Resource Include="fonts\Roboto-BlackItalic.ttf" />
+    <Resource Include="fonts\Roboto-Bold.ttf" />
+    <Resource Include="fonts\Roboto-BoldItalic.ttf" />
+    <Resource Include="fonts\Roboto-Italic.ttf" />
+    <Resource Include="fonts\Roboto-Light.ttf" />
+    <Resource Include="fonts\Roboto-LightItalic.ttf" />
+    <Resource Include="fonts\Roboto-Medium.ttf" />
+    <Resource Include="fonts\Roboto-MediumItalic.ttf" />
+    <Resource Include="fonts\Roboto-Regular.ttf" />
+    <Resource Include="fonts\Roboto-Thin.ttf" />
+    <Resource Include="fonts\Roboto-ThinItalic.ttf" />
     <None Include="Models\DB.edmx.diagram">
       <DependentUpon>DB.edmx</DependentUpon>
     </None>
