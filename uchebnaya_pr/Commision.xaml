@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:uchebnaya_pr"
         mc:Ignorable="d"
-        Title="Commision" Height="600" Width="400">
+        Title="esoft — отчисления и комиссия" Height="600" Width="400"
+        Icon="esoft16.ico">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>

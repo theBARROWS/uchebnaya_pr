@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:uchebnaya_pr"
         mc:Ignorable="d"
-        Title="FormSupplies" Height="400" Width="400">
+        Title="esoft — предложение" Height="400" Width="400"
+        Icon="esoft16.ico">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>

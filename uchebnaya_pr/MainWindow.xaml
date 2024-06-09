@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:uchebnaya_pr"
         mc:Ignorable="d"
-        Title="esoft" Height="500" Width="900" MinHeight="500" MinWidth="900">
+        Title="esoft" Height="500" Width="900" MinHeight="500" MinWidth="900"
+        Icon="esoft16.ico">
     <!--<Window.Resources>
         --><!-- Стиль для TabControl --><!--
         <Style TargetType="TabControl">

@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:uchebnaya_pr"
         mc:Ignorable="d"
-        Title="FormClients" Height="550" Width="350">
+        Title="esoft — клиент" Height="550" Width="350"
+        Icon="esoft16.ico">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>

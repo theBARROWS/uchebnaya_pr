@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:uchebnaya_pr"
         mc:Ignorable="d"
-        Title="FormRealEstates" Height="700" Width="400">
+        Title="esoft — недвижимость" Height="700" Width="400"
+        Icon="esoft16.ico">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -26,12 +27,26 @@
         </StackPanel>
 
         <TextBlock>Адрес</TextBlock>
-        <StackPanel Orientation="Horizontal">
+        <!--<StackPanel Orientation="Horizontal">
             <TextBox x:Name="realEstateCity" MinWidth="110" Style="{StaticResource SmallTextBoxStyle}"></TextBox>
             <TextBox x:Name="realEstateStreet" Margin="15" MinWidth="100" Style="{StaticResource SmallTextBoxStyle}"></TextBox>
             <TextBox x:Name="realEstateHouse" MinWidth="40" Style="{StaticResource SmallTextBoxStyle}"></TextBox>
             <TextBox x:Name="realEstateNumber" MinWidth="40" Margin="15" Style="{StaticResource SmallTextBoxStyle}"></TextBox>
-        </StackPanel>
+        </StackPanel>-->
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"></ColumnDefinition>
+                <ColumnDefinition Width="2*"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <!--<StackPanel Orientation="Horizontal">-->
+            <TextBox Grid.Column="0" x:Name="realEstateCity" Width="100" HorizontalAlignment="Left"  Style="{StaticResource SmallTextBoxStyle}"></TextBox>
+            <TextBox Grid.Column="1" x:Name="realEstateStreet" Width="100" HorizontalAlignment="Left"  Style="{StaticResource SmallTextBoxStyle}"></TextBox>
+            <TextBox Grid.Column="2" x:Name="realEstateHouse" Width="50" HorizontalAlignment="Left"  Style="{StaticResource SmallTextBoxStyle}"></TextBox>
+            <TextBox Grid.Column="3" x:Name="realEstateNumber" Width="50" HorizontalAlignment="Left"  Style="{StaticResource SmallTextBoxStyle}"></TextBox>
+            <!--</StackPanel>-->
+        </Grid>
 
 
         <TextBlock>Долгота</TextBlock>
