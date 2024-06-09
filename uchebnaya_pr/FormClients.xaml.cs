@@ -83,6 +83,8 @@ namespace uchebnaya_pr
                 };
 
                 context.clients.Add(newClient);
+                context.SaveChanges();
+                mainWindow.LoadData();
             }
             else if (operationType == OperationType.Edit)
             {
@@ -93,10 +95,12 @@ namespace uchebnaya_pr
                 clientUpdated.LastName = lastNameTextBox.Text;
                 clientUpdated.Phone = phoneTextBox.Text;
                 clientUpdated.Email = emailTextBox.Text;
+
+                context.SaveChanges();
+                var list = context.clients.ToList();
+                mainWindow.ClientDataGrid.ItemsSource = new ObservableCollection<clients>(list);
             }
 
-            context.SaveChanges();
-            mainWindow.LoadData();
             this.Close();
         }
     }

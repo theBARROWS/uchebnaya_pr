@@ -119,16 +119,19 @@ namespace uchebnaya_pr
                         Price = Convert.ToInt32(priceTB.Text)
                     };
                     context.supplies.Add(newsupply);
+                    context.SaveChanges();
+                    mainWindow.LoadData();
                 }
                 else if (operationType == OperationType.Edit)
                 {
                     supplies supplyToUpdate = context.supplies.Find(editedsupply.Id);
                     supplyToUpdate.Price = Convert.ToInt32(priceTB.Text);
 
+                    context.SaveChanges();
+                    var list = context.supplies.ToList();
+                    mainWindow.SuppliesDataGrid.ItemsSource = new ObservableCollection<supplies>(list);
                 }
 
-                context.SaveChanges();
-                mainWindow.LoadData();
                 this.Close();
             }
             catch

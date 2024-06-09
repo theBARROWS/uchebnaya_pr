@@ -216,6 +216,8 @@ namespace UCH_PR
                         MaxRooms= maxRooms
                     };
                     context.demands.Add(newdemand);
+                    context.SaveChanges();
+                    mainWindow.LoadData();
                 }
                 else if (operationType == OperationType.Edit)
                 {
@@ -236,10 +238,12 @@ namespace UCH_PR
                     demandToUpdate.MinRooms = minRooms;
                     demandToUpdate.MaxRooms = maxRooms;
 
+                    context.SaveChanges();
+                    var list = context.demands.ToList();
+                    mainWindow.DemandDataGrid.ItemsSource = new ObservableCollection<demands>(list);
+
                 }
 
-                context.SaveChanges();
-                mainWindow.LoadData();
                 this.Close();
             }
             catch

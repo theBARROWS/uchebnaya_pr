@@ -68,14 +68,14 @@ namespace uchebnaya_pr
             InitializeComponent();
             mainWindow = main;
             operationType = OperationType.Edit;
-            LoadIds();
+            LoadIds(); 
             editeddeal = deal;
 
             //suppliesAGID.IsEnabled = false;
             //suppliesCLID.IsEnabled = false;
 
-            deaslsIDsupply.SelectedIndex = deal.Supply_Id;
-            dealsIDdemand.SelectedIndex = deal.Demand_Id;
+            deaslsIDsupply.SelectedIndex = deal.Supply_Id-1;
+            dealsIDdemand.SelectedIndex = deal.Demand_Id-1;
 
         }
         private ObservableCollection<deals> GetRealEstates()
@@ -96,6 +96,8 @@ namespace uchebnaya_pr
                         Supply_Id = Convert.ToInt32(deaslsIDsupply.SelectedValue),
                     };
                     context.deals.Add(newdeal);
+                    context.SaveChanges();
+                    mainWindow.LoadData();
                 }
                 else if (operationType == OperationType.Edit)
                 {
@@ -103,10 +105,11 @@ namespace uchebnaya_pr
                     dealtoUpdate.Demand_Id = Convert.ToInt32(dealsIDdemand.SelectedValue);
                     dealtoUpdate.Supply_Id = Convert.ToInt32(deaslsIDsupply.SelectedValue);
 
+                    context.SaveChanges();
+                    var list = context.deals.ToList();
+                    mainWindow.DealsDataGrid.ItemsSource = new ObservableCollection<deals>(list); 
                 }
 
-                context.SaveChanges();
-                mainWindow.LoadData();
                 this.Close();
             }
             catch

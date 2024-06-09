@@ -161,6 +161,8 @@ namespace uchebnaya_pr
                             Floors = floors
                         };
                         context.realEstate.Add(newrealEstate);
+                    context.SaveChanges();
+                    mainWindow.LoadData();
                 }
                 else if (operationType == OperationType.Edit)
                 {
@@ -180,14 +182,17 @@ namespace uchebnaya_pr
                     estateToUpdate.TotalArea = totalArea;
                     estateToUpdate.Rooms = rooms;
                     estateToUpdate.Floors = floors;
+
+                    context.SaveChanges();
+                    var list = context.realEstate.ToList();
+                    mainWindow.RealEstateDataGrid.ItemsSource = new ObservableCollection<realEstate>(list);
                     //estateToUpdate.TotalArea = Convert.ToDouble(realEstateArea.Text);
                     //estateToUpdate.Rooms = Convert.ToInt32(realEstateRooms.Text);
                     //estateToUpdate.Floors = Convert.ToInt32(realEstateFloors.Text);
 
                 }
 
-                context.SaveChanges();
-                mainWindow.LoadData();
+
                 this.Close();
             }
             catch (Exception ex)

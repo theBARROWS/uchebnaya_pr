@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -96,6 +97,8 @@ namespace uchebnaya_pr
                 };
 
                 context.agents.Add(newAgent);
+                context.SaveChanges();
+                mainWindow.LoadData();
             }
             else if (operationType == OperationType.Edit)
             {
@@ -105,10 +108,14 @@ namespace uchebnaya_pr
                 agentUpdated.MiddleName = middleNameTextBox.Text;
                 agentUpdated.LastName = lastNameTextBox.Text;
                 agentUpdated.DealShare = dealShare;
+
+
+                context.SaveChanges();
+                var list = context.agents.ToList();
+                mainWindow.AgentDataGrid.ItemsSource = new ObservableCollection<agents>(list);
+
             }
 
-            context.SaveChanges();
-            mainWindow.LoadData();
             this.Close();
         }
     }
