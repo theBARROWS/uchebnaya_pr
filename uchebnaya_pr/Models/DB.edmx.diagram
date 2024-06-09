@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2ba17add719e4da0bd037d2c49e500d7" Name="Diagram1" ZoomLevel="55">
+        <EntityTypeShape EntityType="realEstateDB2Model.agents" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="realEstateDB2Model.clients" Width="1.5" PointX="6" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="realEstateDB2Model.deals" Width="1.5" PointX="10.5" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="realEstateDB2Model.demands" Width="1.5" PointX="3" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="realEstateDB2Model.districts" Width="1.5" PointX="3.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="realEstateDB2Model.realEstate" Width="1.5" PointX="6" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="realEstateDB2Model.supplies" Width="1.5" PointX="8.25" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="realEstateDB2Model.sysdiagrams" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="realEstateDB2Model.type" Width="1.5" PointX="0.75" PointY="5.625" IsExpanded="true" />
+        <AssociationConnector Association="realEstateDB2Model.FK__supplies__AgentI__2739D489" ManuallyRouted="false" />
+        <AssociationConnector Association="realEstateDB2Model.FK__demands__ClientI__22751F6C" ManuallyRouted="false" />
+        <AssociationConnector Association="realEstateDB2Model.FK__supplies__Client__282DF8C2" ManuallyRouted="false" />
+        <AssociationConnector Association="realEstateDB2Model.FK__deals__Demand_Id__2B0A656D" ManuallyRouted="false" />
+        <AssociationConnector Association="realEstateDB2Model.FK__deals__Supply_Id__2BFE89A6" ManuallyRouted="false" />
+        <AssociationConnector Association="realEstateDB2Model.FK__demands__TypeId__236943A5" ManuallyRouted="false" />
+        <AssociationConnector Association="realEstateDB2Model.FK__realEstat__Distr__08B54D69" ManuallyRouted="false" />
+        <AssociationConnector Association="realEstateDB2Model.FK__realEstat__TypeI__09A971A2" ManuallyRouted="false" />
+        <AssociationConnector Association="realEstateDB2Model.FK__supplies__RealEs__2645B050" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

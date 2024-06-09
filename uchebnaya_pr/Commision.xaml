@@ -1,0 +1,30 @@
+﻿<Window x:Class="uchebnaya_pr.Commision"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:uchebnaya_pr"
+        mc:Ignorable="d"
+        Title="Commision" Height="600" Width="400">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <StackPanel Margin="25" VerticalAlignment="Center">
+        <Label HorizontalAlignment="Center" FontSize="16" FontWeight="ExtraBold">Отчисление и комиссия</Label>
+        <TextBlock>Стоимость услуг для клиента-продавца</TextBlock>
+        <TextBox x:Name="pr1" IsReadOnly="True" Style="{StaticResource SmallTextBoxStyle}"></TextBox>
+        <TextBlock>Стоимость услуг для клиента-покупателя</TextBlock>
+        <TextBox x:Name="pr2" IsReadOnly="True" Style="{StaticResource SmallTextBoxStyle}"></TextBox>
+        <TextBlock>Размер отчислений риэлтору клиента-продавца</TextBlock>
+        <TextBox x:Name="pr3" IsReadOnly="True" Style="{StaticResource SmallTextBoxStyle}"></TextBox>
+        <TextBlock>Размер отчислений риэлтору клиента-покупателя</TextBlock>
+        <TextBox x:Name="pr4" IsReadOnly="True" Style="{StaticResource SmallTextBoxStyle}"></TextBox>
+        <TextBlock>Размер отчислений компании</TextBlock>
+        <TextBox x:Name="pr5" IsReadOnly="True" Style="{StaticResource SmallTextBoxStyle}"></TextBox>
+        <Button Click="Button_Click">ОК</Button>
+    </StackPanel>
+</Window>

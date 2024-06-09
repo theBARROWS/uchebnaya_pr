@@ -1,0 +1,50 @@
+﻿<Window x:Class="uchebnaya_pr.FormRealEstates"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:uchebnaya_pr"
+        mc:Ignorable="d"
+        Title="FormRealEstates" Height="700" Width="400">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <StackPanel Margin="25" VerticalAlignment="Center">
+        <Label HorizontalAlignment="Center" FontSize="16" FontWeight="ExtraBold">Недвижимость</Label>
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
+            <TextBlock>Тип</TextBlock>
+            <ComboBox x:Name="realEstateType" Width = "120" Style="{StaticResource MyComboBoxStyle}" SelectedIndex="0">
+                <ComboBoxItem Content = "Дом" />
+                <ComboBoxItem Content = "Земля" />
+                <ComboBoxItem Content = "Квартира" />
+            </ComboBox>
+        </StackPanel>
+
+        <TextBlock>Адрес</TextBlock>
+        <StackPanel Orientation="Horizontal">
+            <TextBox x:Name="realEstateCity" MinWidth="110" Style="{StaticResource SmallTextBoxStyle}"></TextBox>
+            <TextBox x:Name="realEstateStreet" Margin="15" MinWidth="100" Style="{StaticResource SmallTextBoxStyle}"></TextBox>
+            <TextBox x:Name="realEstateHouse" MinWidth="40" Style="{StaticResource SmallTextBoxStyle}"></TextBox>
+            <TextBox x:Name="realEstateNumber" MinWidth="40" Margin="15" Style="{StaticResource SmallTextBoxStyle}"></TextBox>
+        </StackPanel>
+
+
+        <TextBlock>Долгота</TextBlock>
+        <TextBox x:Name="realEstateLongtitude" Style="{StaticResource SmallTextBoxStyle}"></TextBox>
+        <TextBlock>Широта</TextBlock>
+        <TextBox x:Name="realEstateTude" Style="{StaticResource SmallTextBoxStyle}"></TextBox>
+
+        <TextBlock>Площадь</TextBlock>
+        <TextBox x:Name="realEstateArea"  Style="{StaticResource SmallTextBoxStyle}"></TextBox>
+        <TextBlock>Комнаты</TextBlock>
+        <TextBox x:Name="realEstateRooms" Style="{StaticResource SmallTextBoxStyle}"></TextBox>
+        <TextBlock>Этажи</TextBlock>
+        <TextBox x:Name="realEstateFloors" Style="{StaticResource SmallTextBoxStyle}"></TextBox>
+        <Button Click="Button_Click">Сохранить</Button>
+    </StackPanel>
+</Window>

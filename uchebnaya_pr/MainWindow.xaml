@@ -1,0 +1,385 @@
+﻿<Window x:Class="uchebnaya_pr.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:uchebnaya_pr"
+        mc:Ignorable="d"
+        Title="esoft" Height="500" Width="900" MinHeight="500" MinWidth="900">
+    <!--<Window.Resources>
+        --><!-- Стиль для TabControl --><!--
+        <Style TargetType="TabControl">
+            <Setter Property="BorderBrush" Value="Gray"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="5"/>
+        </Style>
+        <Style x:Key="paddingillusion">
+            <Setter Property="Control.FontFamily" Value="Verdana" />
+            <Setter Property="Control.Foreground" Value="Black" />
+            <Setter Property="Control.Margin" Value="10 10 10 0" />
+        </Style>
+        <Style TargetType="DataGrid">
+            <Setter Property="BorderBrush" Value="Gray"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="RowHeaderWidth" Value="0"/>
+            <Setter Property="RowHeaderStyle" Value="{x:Null}"/>
+            <Setter Property="HeadersVisibility" Value="Column"/>
+            <Setter Property="HorizontalScrollBarVisibility" Value="Hidden"/>
+            <Setter Property="VerticalScrollBarVisibility" Value="Hidden"/>
+        </Style>
+    </Window.Resources>-->
+    <Window.Resources>
+        <Style x:Key="paddingillusion">
+            <Setter Property="Control.FontFamily" Value="Verdana" />
+            <Setter Property="Control.Foreground" Value="Black" />
+            <Setter Property="Control.Margin" Value="15" />
+        </Style>
+
+        <Style x:Key="SmallButtonStyle" TargetType="Button">
+            <Setter Property="Height" Value="24" />
+            <Setter Property="Padding" Value="10" />
+            <Setter Property="Margin" Value="15" />
+            <Setter Property="Background" Value="#F0F0F0"/>
+            <Setter Property="Foreground" Value="#666666"/>
+            <Setter Property="BorderBrush" Value="#D0D0D0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="3">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"
+                                              Margin="5,2,5,2"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#E0E0E0"/>
+                    <Setter Property="Foreground" Value="#444444"/>
+                    <Setter Property="BorderBrush" Value="#B0B0B0"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="NormalButtonStyle" TargetType="Button" BasedOn="{StaticResource SmallButtonStyle}">
+            <Setter Property="Height" Value="36" />
+        </Style>
+
+        <Style x:Key="LargeButtonStyle" TargetType="Button" BasedOn="{StaticResource SmallButtonStyle}">
+            <Setter Property="Height" Value="48" />
+        </Style>
+
+        <Style x:Key="SmallTextBoxStyle" TargetType="TextBox">
+            <Setter Property="Height" Value="24" />
+            <Setter Property="Padding" Value="10" />
+            <Setter Property="Margin" Value="15" />
+        </Style>
+
+        <Style x:Key="NormalTextBoxStyle" TargetType="TextBox" BasedOn="{StaticResource SmallTextBoxStyle}">
+            <Setter Property="Height" Value="36" />
+        </Style>
+
+        <Style x:Key="LargeTextBoxStyle" TargetType="TextBox" BasedOn="{StaticResource SmallTextBoxStyle}">
+            <Setter Property="Height" Value="48" />
+        </Style>
+
+        <Style TargetType="TabControl">
+            <Setter Property="Foreground" Value="#FF636363" />
+            <Setter Property="Background" Value="#FFEBEBEB" />
+            <Setter Property="Padding" Value="10" />
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TabControl}">
+                        <Grid Background="{TemplateBinding Background}">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <TabPanel 
+                                Grid.Row="0" 
+                                Margin="0" 
+                                IsItemsHost="True" 
+                                Background="{TemplateBinding Background}" />
+                            <ContentPresenter 
+                                Grid.Row="1" 
+                                ContentSource="SelectedContent" />
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="ItemContainerStyle">
+                <Setter.Value>
+                    <Style TargetType="{x:Type TabItem}">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type TabItem}">
+                                    <Grid Margin="10,5">
+                                        <Border 
+                                            Name="Border" 
+                                            Background="Transparent" 
+                                            BorderBrush="Transparent" 
+                                            BorderThickness="0" 
+                                            CornerRadius="2">
+                                            <ContentPresenter 
+                                                HorizontalAlignment="Center" 
+                                                VerticalAlignment="Center" 
+                                                Margin="5,2,5,2" 
+                                                ContentSource="Header" />
+                                        </Border>
+                                        <Rectangle 
+                                            Name="SelectionIndicator" 
+                                            Height="2" 
+                                            Fill="#007ACC" 
+                                            VerticalAlignment="Bottom" 
+                                            HorizontalAlignment="Stretch" 
+                                            Visibility="Collapsed" />
+                                    </Grid>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsSelected" Value="True">
+                                            <Setter TargetName="SelectionIndicator" Property="Visibility" Value="Visible" />
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+    </Window.Resources>
+    <DockPanel>
+
+        <TabControl x:Name="MainTabControl" DockPanel.Dock="Bottom">
+            <TabItem Header="Недвижимость" >
+                <Grid Background="white">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <DataGrid  x:Name="RealEstateDataGrid" AutoGenerateColumns="False" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"                   IsReadOnly="True" 
+                  SelectionMode="Single" 
+                  SelectionUnit="FullRow"
+                              HorizontalScrollBarVisibility="Hidden"
+          VerticalScrollBarVisibility="Hidden"
+                                                              BorderThickness="0"
+                               GridLinesVisibility="Horizontal"
+                               HorizontalGridLinesBrush="#CFD8DC"
+                               AlternatingRowBackground="#F7F9F9">
+
+
+
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID" MinWidth="50" Width="*" Binding="{Binding Id}" />
+                            <DataGridTextColumn Header="Тип" MinWidth="50" Width="*" Binding="{Binding type.Name}" />
+                            <DataGridTextColumn Header="Город" MinWidth="50" Width="*" Binding="{Binding Address_City}" />
+                            <DataGridTextColumn Header="Улица" MinWidth="50" Width="*" Binding="{Binding Address_Street}" />
+                            <DataGridTextColumn Header="Дом" MinWidth="50" Width="*" Binding="{Binding Address_House}" />
+                            <DataGridTextColumn Header="Квартира" MinWidth="50" Width="*" Binding="{Binding Address_Number}" />
+                            <DataGridTextColumn Header="Широта" MinWidth="50" Width="*" Binding="{Binding Coordinate_latitude}" />
+                            <DataGridTextColumn Header="Долгота" MinWidth="50" Width="*" Binding="{Binding Coordinate_longtitude}" />
+                        </DataGrid.Columns>
+
+                    </DataGrid>
+                    <Border Grid.Column="1" BorderBrush="#b0bec5" Background="white" BorderThickness="1" CornerRadius="10" Margin="25" >
+                        <StackPanel VerticalAlignment="Center">
+                            <Label HorizontalAlignment="Center" Style="{StaticResource paddingillusion}" FontSize="16" FontWeight="ExtraBold">Недвижимость</Label>
+                            <Button Style="{StaticResource NormalButtonStyle}" Click="AddRealEstateButton_Click">Добавить</Button>
+                            <Button Style="{StaticResource NormalButtonStyle}" Click="EditRealEstateButton_Click">Редактировать</Button>
+                            <Button Style="{StaticResource NormalButtonStyle}" Click="DeleteRealEstateButton_Click">Удалить</Button>
+                        </StackPanel>
+                    </Border>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Клиенты">
+                <Grid Background="white">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <DataGrid  x:Name="ClientDataGrid" AutoGenerateColumns="False" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"                   IsReadOnly="True" 
+                  SelectionMode="Single" 
+                  SelectionUnit="FullRow"
+                              HorizontalScrollBarVisibility="Hidden"
+          VerticalScrollBarVisibility="Hidden"
+                               BorderThickness="0"
+                               GridLinesVisibility="Horizontal"
+                               HorizontalGridLinesBrush="#CFD8DC"
+                               AlternatingRowBackground="#F7F9F9">
+
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID" MinWidth="50" Width="*" Binding="{Binding Id}" />
+                            <DataGridTextColumn Header="Имя" MinWidth="50" Width="*" Binding="{Binding FirstName}" />
+                            <DataGridTextColumn Header="Фамилия" MinWidth="50" Width="*" Binding="{Binding MiddleName}" />
+                            <DataGridTextColumn Header="Отчество" MinWidth="50" Width="*" Binding="{Binding LastName}" />
+                            <DataGridTextColumn Header="Телефон" MinWidth="50" Width="*" Binding="{Binding Phone}" />
+                            <DataGridTextColumn Header="Почта" MinWidth="50" Width="*" Binding="{Binding Email}" />
+                        </DataGrid.Columns>
+
+                    </DataGrid>
+
+                    <Border Grid.Column="1" BorderBrush="#b0bec5"  Background="white" BorderThickness="1" CornerRadius="10" Margin="25" >
+                        <StackPanel VerticalAlignment="Center">
+                            <Label HorizontalAlignment="Center" Style="{StaticResource paddingillusion}" FontSize="16" FontWeight="ExtraBold">Клиенты</Label>
+                            <Button Style="{StaticResource NormalButtonStyle}" Click="AddClientButton_Click">Добавить</Button>
+                            <Button Style="{StaticResource NormalButtonStyle}" Click="EditClientButton_Click">Редактировать</Button>
+                            <Button Style="{StaticResource NormalButtonStyle}" Click="DeleteClientButton_Click">Удалить</Button>
+                        </StackPanel>
+                    </Border>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Агенты">
+                <Grid Background="white">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <DataGrid  x:Name="AgentDataGrid" AutoGenerateColumns="False" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"                   IsReadOnly="True" 
+                  SelectionMode="Single" 
+                  SelectionUnit="FullRow"
+                              HorizontalScrollBarVisibility="Hidden"
+          VerticalScrollBarVisibility="Hidden"
+                                                              BorderThickness="0"
+                               GridLinesVisibility="Horizontal"
+                               HorizontalGridLinesBrush="#CFD8DC"
+                               AlternatingRowBackground="#F7F9F9">
+
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID"  MinWidth="50" Width="*" Binding="{Binding Id}" />
+                            <DataGridTextColumn Header="Имя" MinWidth="50" Width="*" Binding="{Binding FirstName}" />
+                            <DataGridTextColumn Header="Фамилия" MinWidth="50" Width="*" Binding="{Binding MiddleName}" />
+                            <DataGridTextColumn Header="Отчество" MinWidth="50" Width="*" Binding="{Binding LastName}" />
+                            <DataGridTextColumn Header="Доля" MinWidth="50" Width="*" Binding="{Binding DealShare}" />
+                        </DataGrid.Columns>
+
+                    </DataGrid>
+                    <Border Grid.Column="1" BorderBrush="#b0bec5"  Background="white" BorderThickness="1" CornerRadius="10" Margin="25" >
+                        <StackPanel VerticalAlignment="Center">
+                            <Label HorizontalAlignment="Center" Style="{StaticResource paddingillusion}" FontSize="16" FontWeight="ExtraBold">Агенты</Label>
+                            <Button Style="{StaticResource NormalButtonStyle}" Click="AddAgentButton_Click">Добавить</Button>
+                            <Button Style="{StaticResource NormalButtonStyle}" Click="EditAgentButton_Click">Редактировать</Button>
+                            <Button Style="{StaticResource NormalButtonStyle}" Click="DeleteAgentButton_Click">Удалить</Button>
+                        </StackPanel>
+                    </Border>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Предложения">
+                <Grid Background="white">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <DataGrid  x:Name="SuppliesDataGrid" AutoGenerateColumns="False" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"                   IsReadOnly="True" 
+                  SelectionMode="Single" 
+                  SelectionUnit="FullRow"
+                              HorizontalScrollBarVisibility="Hidden"
+          VerticalScrollBarVisibility="Hidden"
+                                                              BorderThickness="0"
+                               GridLinesVisibility="Horizontal"
+                               HorizontalGridLinesBrush="#CFD8DC"
+                               AlternatingRowBackground="#F7F9F9">
+
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID" MinWidth="50" Width="*" Binding="{Binding Id}" />
+                            <DataGridTextColumn Header="ID недвижимости" MinWidth="50" Width="*" Binding="{Binding RealEstateId}" />
+                            <DataGridTextColumn Header="ID агента" MinWidth="50" Width="*" Binding="{Binding AgentId}" />
+                            <DataGridTextColumn Header="ID клиента" MinWidth="50" Width="*" Binding="{Binding ClientId}" />
+                            <DataGridTextColumn Header="Цена" MinWidth="50" Width="*" Binding="{Binding Price}" />
+                        </DataGrid.Columns>
+
+                    </DataGrid>
+                    <Border Grid.Column="1" BorderBrush="#b0bec5"  Background="white" BorderThickness="1" CornerRadius="10" Margin="25" >
+                        <StackPanel VerticalAlignment="Center">
+                            <Label HorizontalAlignment="Center" Style="{StaticResource paddingillusion}" FontSize="16" FontWeight="ExtraBold">Предложение</Label>
+                            <Button Style="{StaticResource NormalButtonStyle}" Click="AddSuppliesButton_Click">Добавить</Button>
+                            <Button Style="{StaticResource NormalButtonStyle}" Click="EditSuppliesButton_Click">Редактировать</Button>
+                            <Button Style="{StaticResource NormalButtonStyle}" Click="DeleteSuppliesButton_Click">Удалить</Button>
+                        </StackPanel>
+                    </Border>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Потребности">
+                <Grid Background="white">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <DataGrid  x:Name="DemandDataGrid" AutoGenerateColumns="False" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"                   IsReadOnly="True" 
+                  SelectionMode="Single" 
+                  SelectionUnit="FullRow"
+                              HorizontalScrollBarVisibility="Hidden"
+          VerticalScrollBarVisibility="Hidden" BorderThickness="0"
+                               GridLinesVisibility="Horizontal"
+                               HorizontalGridLinesBrush="#CFD8DC"
+                               AlternatingRowBackground="#F7F9F9">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID" MinWidth="50" Width="*" Binding="{Binding Id}" />
+                            <DataGridTextColumn Header="Клиент" MinWidth="50" Width="*" Binding="{Binding ClientId}" />
+                            <DataGridTextColumn Header="Тип" MinWidth="50" Width="*" Binding="{Binding type.Name}" />
+                            <DataGridTextColumn Header="Город" MinWidth="50" Width="*" Binding="{Binding Address_City}" />
+                            <DataGridTextColumn Header="Улица" MinWidth="50" Width="*" Binding="{Binding Address_Street}" />
+                            <DataGridTextColumn Header="Дом" MinWidth="50" Width="*" Binding="{Binding Address_House}" />
+                            <DataGridTextColumn Header="Квартира" MinWidth="50" Width="*" Binding="{Binding Address_Number}" />
+                            <DataGridTextColumn Header="Мин. цена" MinWidth="75" Width="*" Binding="{Binding MinPrice}" />
+                            <DataGridTextColumn Header="Макс. цена" MinWidth="75" Width="*" Binding="{Binding MaxPrice}" />
+                        </DataGrid.Columns>
+
+                    </DataGrid>
+                    <Border Grid.Column="1" BorderBrush="#b0bec5"  Background="white" BorderThickness="1" CornerRadius="10" Margin="25" >
+                        <StackPanel VerticalAlignment="Center">
+                            <Label HorizontalAlignment="Center" Style="{StaticResource paddingillusion}" FontSize="16" FontWeight="ExtraBold">Потребность</Label>
+                            <Button Style="{StaticResource NormalButtonStyle}" Click="AddDemandButton_Click">Добавить</Button>
+                            <Button Style="{StaticResource NormalButtonStyle}" Click="EditDemandButton_Click">Редактировать</Button>
+                            <Button Style="{StaticResource NormalButtonStyle}" Click="DeleteDemandButton_Click">Удалить</Button>
+                        </StackPanel>
+                    </Border>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Сделки">
+                <Grid Background="white">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <DataGrid  x:Name="DealsDataGrid" AutoGenerateColumns="False" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"                   IsReadOnly="True" 
+                  SelectionMode="Single" 
+                  SelectionUnit="FullRow"
+                              HorizontalScrollBarVisibility="Hidden"
+          VerticalScrollBarVisibility="Hidden"
+                                                              BorderThickness="0"
+                               GridLinesVisibility="Horizontal"
+                               HorizontalGridLinesBrush="#CFD8DC"
+                               AlternatingRowBackground="#F7F9F9">
+
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID" MinWidth="50" Width="*" Binding="{Binding Id}" />
+                            <DataGridTextColumn Header="ID потребности" MinWidth="50" Width="*" Binding="{Binding Demand_Id}" />
+                            <DataGridTextColumn Header="ID предложения" MinWidth="50" Width="*" Binding="{Binding Supply_Id}" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Border Grid.Column="1" BorderBrush="#b0bec5"  Background="white" BorderThickness="1" CornerRadius="10" Margin="25" >
+                        <StackPanel VerticalAlignment="Center">
+                            <Label HorizontalAlignment="Center" Style="{StaticResource paddingillusion}" FontSize="16" FontWeight="ExtraBold">Сделка</Label>
+                            <Button Style="{StaticResource NormalButtonStyle}" Click="Button_Click">Комиссия</Button>
+                            <Button Style="{StaticResource NormalButtonStyle}" Click="AddDealsButton_Click">Добавить</Button>
+                            <Button Style="{StaticResource NormalButtonStyle}" Click="EditDealsButton_Click">Редактировать</Button>
+                            <Button Style="{StaticResource NormalButtonStyle}" Click="DeleteDealsButton_Click">Удалить</Button>
+                        </StackPanel>
+                    </Border>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </DockPanel>
+</Window>

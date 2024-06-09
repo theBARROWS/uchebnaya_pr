@@ -1,0 +1,38 @@
+﻿<Window x:Class="uchebnaya_pr.FormDeals"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:uchebnaya_pr"
+        mc:Ignorable="d"
+        Title="FormDeals" Height="400" Width="400">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <StackPanel Margin="25" VerticalAlignment="Center">
+        <Label HorizontalAlignment="Center" FontSize="16" FontWeight="ExtraBold">Сделка</Label>
+        <!--<StackPanel Orientation="Horizontal"  Margin="0 15 0 0">-->
+        <Grid Margin="0 15">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Left">
+                <TextBlock>Потребность</TextBlock>
+                <ComboBox x:Name="dealsIDdemand" Width = "150" Style="{StaticResource MyComboBoxStyle}" SelectedIndex="0">
+                </ComboBox>
+            </StackPanel>
+            <StackPanel Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Left" >
+                <TextBlock>Предложение</TextBlock>
+                <ComboBox x:Name="deaslsIDsupply" Width = "150" Style="{StaticResource MyComboBoxStyle}" SelectedIndex="0">
+                </ComboBox>
+            </StackPanel>
+        </Grid>
+        <!--</StackPanel>-->
+        <Button Click="Button_Click">Сохранить</Button>
+    </StackPanel>
+</Window>

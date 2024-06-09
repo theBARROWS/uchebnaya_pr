@@ -1,0 +1,109 @@
+﻿<Window x:Class="UCH_PR.FormDemands"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:UCH_PR"
+        mc:Ignorable="d"
+        Title="FormDemands" Height="700" Width="400">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <StackPanel Margin="25" VerticalAlignment="Center">
+        <Label HorizontalAlignment="Center" FontSize="16" FontWeight="ExtraBold">Потребность</Label>
+        <StackPanel Orientation="Horizontal" Margin="0 15">
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
+                <TextBlock>Тип</TextBlock>
+                <ComboBox x:Name="demandClientId" Width = "120" Style="{StaticResource MyComboBoxStyle}" SelectedIndex="0">
+                </ComboBox>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Left" Margin="15 0">
+                <TextBlock>Тип</TextBlock>
+                <ComboBox x:Name="demandrType" Width = "120" Style="{StaticResource MyComboBoxStyle}" SelectedIndex="0">
+                    <ComboBoxItem Content = "Дом" />
+                    <ComboBoxItem Content = "Земля" />
+                    <ComboBoxItem Content = "Квартира" />
+                </ComboBox>
+            </StackPanel>
+        </StackPanel>
+
+        <TextBlock>Адрес</TextBlock>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <StackPanel Orientation="Horizontal">
+                <TextBox x:Name="realEstateCity" MinWidth="110" Style="{StaticResource SmallTextBoxStyle}"></TextBox>
+                <TextBox x:Name="realEstateStreet" Margin="15" MinWidth="100" Style="{StaticResource SmallTextBoxStyle}"></TextBox>
+                <TextBox x:Name="realEstateHouse" MinWidth="40" Style="{StaticResource SmallTextBoxStyle}"></TextBox>
+                <TextBox x:Name="realEstateNumber" MinWidth="40" Margin="15" Style="{StaticResource SmallTextBoxStyle}"></TextBox>
+            </StackPanel>
+        </Grid>
+
+
+        <!--<StackPanel Orientation="Horizontal" Margin="0 15">-->
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Left">
+                <TextBlock>Мин. этаж</TextBlock>
+                <TextBox x:Name="minfloor" Style="{StaticResource SmallTextBoxStyle}"></TextBox>
+            </StackPanel>
+            <StackPanel Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Left" >
+                <TextBlock>Макс. этаж</TextBlock>
+                <TextBox x:Name="maxfloor" Style="{StaticResource SmallTextBoxStyle}"></TextBox>
+            </StackPanel>
+            <StackPanel Grid.Column="2" Orientation="Vertical" HorizontalAlignment="Left" >
+                <TextBlock>Мин. комн</TextBlock>
+                <TextBox x:Name="minroom" Style="{StaticResource SmallTextBoxStyle}"></TextBox>
+            </StackPanel>
+            <StackPanel Grid.Column="3" Orientation="Vertical" HorizontalAlignment="Left">
+                <TextBlock>Макс. комн</TextBlock>
+                <TextBox x:Name="maxroom" Style="{StaticResource SmallTextBoxStyle}"></TextBox>
+            </StackPanel>
+    <!--</StackPanel>-->
+    </Grid>
+
+    <!--<StackPanel Orientation="Horizontal" Margin="0 15">-->
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Left">
+                <TextBlock>Мин. площ</TextBlock>
+                <TextBox x:Name="minar"  Style="{StaticResource SmallTextBoxStyle}"></TextBox>
+            </StackPanel>
+            <StackPanel Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Left" >
+                <TextBlock>Макс. площ</TextBlock>
+                <TextBox x:Name="maxar" Style="{StaticResource SmallTextBoxStyle}"></TextBox>
+            </StackPanel>
+            <StackPanel Grid.Column="2" Orientation="Vertical" HorizontalAlignment="Left" >
+                <TextBlock>Мин. цена</TextBlock>
+                <TextBox x:Name="minpr" Style="{StaticResource SmallTextBoxStyle}"></TextBox>
+            </StackPanel>
+            <StackPanel Grid.Column="3" Orientation="Vertical" HorizontalAlignment="Left">
+                <TextBlock>Макс. цена</TextBlock>
+                <TextBox x:Name="maxpr" Style="{StaticResource SmallTextBoxStyle}"></TextBox>
+            </StackPanel>
+        </Grid>
+        <!--</StackPanel>-->
+
+
+        <Button Click="Button_Click">Сохранить</Button>
+    </StackPanel>
+</Window>

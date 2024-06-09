@@ -1,0 +1,39 @@
+﻿<Window x:Class="uchebnaya_pr.FormSupplies"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:uchebnaya_pr"
+        mc:Ignorable="d"
+        Title="FormSupplies" Height="400" Width="400">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <StackPanel Margin="25" VerticalAlignment="Center">
+        <Label HorizontalAlignment="Center" FontSize="16" FontWeight="ExtraBold">Предложение</Label>
+        <StackPanel Orientation="Horizontal" Margin="0 15">
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
+                <TextBlock>Клиент</TextBlock>
+                <ComboBox x:Name="suppliesCLID" Width = "100" Style="{StaticResource MyComboBoxStyle}" SelectedIndex="0">
+                </ComboBox>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Left" Margin="15 0">
+                <TextBlock>Агент</TextBlock>
+                <ComboBox x:Name="suppliesAGID" Width = "100" Style="{StaticResource MyComboBoxStyle}" SelectedIndex="0">
+                </ComboBox>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Left" Margin=" 0">
+                <TextBlock>Недвижимость</TextBlock>
+                <ComboBox x:Name="suppliesREID" Width = "100" Style="{StaticResource MyComboBoxStyle}" SelectedIndex="0">
+                </ComboBox>
+            </StackPanel>
+        </StackPanel>
+        <TextBlock>Цена</TextBlock>
+        <TextBox x:Name="priceTB" Style="{StaticResource SmallTextBoxStyle}"></TextBox>
+        <Button Click="Button_Click">Сохранить</Button>
+    </StackPanel>
+</Window>
