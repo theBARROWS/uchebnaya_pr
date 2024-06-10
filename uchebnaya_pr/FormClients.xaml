@@ -20,15 +20,15 @@
     <StackPanel Margin="25" VerticalAlignment="Center">
         <Label HorizontalAlignment="Center" FontSize="16" FontWeight="ExtraBold">Клиент</Label>
         <TextBlock>Имя</TextBlock>
-        <TextBox x:Name="firstNameTextBox" Style="{StaticResource SmallTextBoxStyle}"></TextBox>
+        <TextBox x:Name="firstNameTextBox" MaxLength="50" Style="{StaticResource SmallTextBoxStyle}"></TextBox>
         <TextBlock>Фамилия</TextBlock>
-        <TextBox x:Name="middleNameTextBox" Style="{StaticResource SmallTextBoxStyle}"></TextBox>
+        <TextBox x:Name="middleNameTextBox" MaxLength="50" Style="{StaticResource SmallTextBoxStyle}"></TextBox>
         <TextBlock>Отчество</TextBlock>
-        <TextBox x:Name="lastNameTextBox" Style="{StaticResource SmallTextBoxStyle}"></TextBox>
+        <TextBox x:Name="lastNameTextBox" MaxLength="50" Style="{StaticResource SmallTextBoxStyle}"></TextBox>
         <TextBlock>Телефон</TextBlock>
-        <TextBox x:Name="phoneTextBox" Style="{StaticResource SmallTextBoxStyle}"></TextBox>
+        <TextBox x:Name="phoneTextBox" MaxLength="11" Style="{StaticResource SmallTextBoxStyle}"></TextBox>
         <TextBlock>Почта</TextBlock>
-        <TextBox x:Name="emailTextBox" Style="{StaticResource SmallTextBoxStyle}"></TextBox>
+        <TextBox x:Name="emailTextBox" MaxLength="50" Style="{StaticResource SmallTextBoxStyle}"></TextBox>
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>

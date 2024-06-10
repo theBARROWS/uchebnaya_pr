@@ -41,25 +41,25 @@
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <!--<StackPanel Orientation="Horizontal">-->
-            <TextBox Grid.Column="0" x:Name="realEstateCity" Width="100" HorizontalAlignment="Left"  Style="{StaticResource SmallTextBoxStyle}"></TextBox>
-            <TextBox Grid.Column="1" x:Name="realEstateStreet" Width="100" HorizontalAlignment="Left"  Style="{StaticResource SmallTextBoxStyle}"></TextBox>
-            <TextBox Grid.Column="2" x:Name="realEstateHouse" Width="50" HorizontalAlignment="Left"  Style="{StaticResource SmallTextBoxStyle}"></TextBox>
-            <TextBox Grid.Column="3" x:Name="realEstateNumber" Width="50" HorizontalAlignment="Left"  Style="{StaticResource SmallTextBoxStyle}"></TextBox>
+            <TextBox Grid.Column="0" x:Name="realEstateCity" Width="100" HorizontalAlignment="Left" MaxLength="50" Style="{StaticResource SmallTextBoxStyle}"></TextBox>
+            <TextBox Grid.Column="1" x:Name="realEstateStreet" Width="100" HorizontalAlignment="Left" MaxLength="50" Style="{StaticResource SmallTextBoxStyle}"></TextBox>
+            <TextBox Grid.Column="2" x:Name="realEstateHouse" Width="50" HorizontalAlignment="Left" MaxLength="50"  Style="{StaticResource SmallTextBoxStyle}"></TextBox>
+            <TextBox Grid.Column="3" x:Name="realEstateNumber" Width="50" HorizontalAlignment="Left" MaxLength="50" Style="{StaticResource SmallTextBoxStyle}"></TextBox>
             <!--</StackPanel>-->
         </Grid>
 
 
         <TextBlock>Долгота</TextBlock>
-        <TextBox x:Name="realEstateLongtitude" Style="{StaticResource SmallTextBoxStyle}"></TextBox>
+        <TextBox x:Name="realEstateLongtitude" MaxLength="11" Style="{StaticResource SmallTextBoxStyle}"></TextBox>
         <TextBlock>Широта</TextBlock>
-        <TextBox x:Name="realEstateTude" Style="{StaticResource SmallTextBoxStyle}"></TextBox>
+        <TextBox x:Name="realEstateTude" MaxLength="11" Style="{StaticResource SmallTextBoxStyle}"></TextBox>
 
         <TextBlock>Площадь</TextBlock>
-        <TextBox x:Name="realEstateArea"  Style="{StaticResource SmallTextBoxStyle}"></TextBox>
+        <TextBox x:Name="realEstateArea" MaxLength="11"  Style="{StaticResource SmallTextBoxStyle}"></TextBox>
         <TextBlock>Комнаты</TextBlock>
-        <TextBox x:Name="realEstateRooms" Style="{StaticResource SmallTextBoxStyle}"></TextBox>
+        <TextBox x:Name="realEstateRooms" MaxLength="3" Style="{StaticResource SmallTextBoxStyle}"></TextBox>
         <TextBlock>Этажи</TextBlock>
-        <TextBox x:Name="realEstateFloors" Style="{StaticResource SmallTextBoxStyle}"></TextBox>
+        <TextBox x:Name="realEstateFloors" MaxLength="3" Style="{StaticResource SmallTextBoxStyle}"></TextBox>
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>

@@ -121,6 +121,7 @@
     <Compile Include="FormSupplies.xaml.cs">
       <DependentUpon>FormSupplies.xaml</DependentUpon>
     </Compile>
+    <Compile Include="LevenshteinDistanceSearch.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

@@ -34,7 +34,7 @@
             </StackPanel>
         </StackPanel>
         <TextBlock>Цена</TextBlock>
-        <TextBox x:Name="priceTB" Style="{StaticResource SmallTextBoxStyle}"></TextBox>
+        <TextBox x:Name="priceTB" MaxLength="11" Style="{StaticResource SmallTextBoxStyle}"></TextBox>
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>

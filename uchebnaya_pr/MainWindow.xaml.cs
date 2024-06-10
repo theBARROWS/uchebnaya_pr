@@ -356,5 +356,87 @@ namespace uchebnaya_pr
                 MessageBox.Show("Что-то не так!");
             }
         }
+
+        private void SearchRealEstate_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (SearchRealEstate.Text == "")
+            {
+                LoadData();
+            }
+            else
+            {
+                string searchTerm = SearchRealEstate.Text;
+                List<realEstate> searchResult = new List<realEstate>();
+                LevenshteinDistanceSearch search = new LevenshteinDistanceSearch();
+                foreach (var entry in context.realEstate.ToList())
+                {
+                    if (search.LevenshteinDistance(entry.Address_City, searchTerm) <= 3 ||
+                        search.LevenshteinDistance(entry.Address_Street, searchTerm) <= 3 ||
+                        search.LevenshteinDistance(entry.Address_House.ToString(), searchTerm) <= 1 ||
+                        search.LevenshteinDistance(entry.Address_Number.ToString(), searchTerm) <= 1)
+                    {
+                        searchResult.Add(entry);
+                    }
+                }
+                RealEstateDataGrid.ItemsSource = searchResult;
+            }
+        }
+
+        private void SearchClient_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (SearchClient.Text == "")
+            {
+                LoadData();
+            }
+            else
+            {
+                string searchTerm = SearchClient.Text;
+                List<clients> searchResult = new List<clients>();
+                LevenshteinDistanceSearch search = new LevenshteinDistanceSearch();
+                foreach (var entry in context.clients.ToList())
+                {
+                    if (search.LevenshteinDistance(entry.FirstName, searchTerm) <= 3 ||
+                        search.LevenshteinDistance(entry.MiddleName, searchTerm) <= 3 ||
+                        search.LevenshteinDistance(entry.LastName, searchTerm) <= 3 ||
+                        search.LevenshteinDistance($"{entry.FirstName} {entry.MiddleName} {entry.LastName}", searchTerm) <= 3
+                        || $"{entry.FirstName} {entry.MiddleName} {entry.LastName}" == searchTerm
+                        || $"{entry.FirstName} {entry.MiddleName}" == searchTerm
+                        || $"{entry.FirstName} {entry.LastName}" == searchTerm
+                        || entry.FirstName == searchTerm || entry.MiddleName == searchTerm)
+                    {
+                        searchResult.Add(entry);
+                    }
+                }
+                ClientDataGrid.ItemsSource = searchResult;
+            }
+        }
+        private void SearchAgent_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (SearchAgent.Text == "")
+            {
+                LoadData();
+            }
+            else
+            {
+                string searchTerm = SearchAgent.Text;
+                List<agents> searchResult = new List<agents>();
+                LevenshteinDistanceSearch search = new LevenshteinDistanceSearch();
+                foreach (var entry in context.agents.ToList())
+                {
+                    if (search.LevenshteinDistance(entry.FirstName, searchTerm) <= 3 ||
+                        search.LevenshteinDistance(entry.MiddleName, searchTerm) <= 3 ||
+                        search.LevenshteinDistance(entry.LastName, searchTerm) <= 3 ||
+                        search.LevenshteinDistance($"{entry.FirstName} {entry.MiddleName} {entry.LastName}", searchTerm) <= 3
+                        || $"{entry.FirstName} {entry.MiddleName} {entry.LastName}" == searchTerm
+                        || $"{entry.FirstName} {entry.MiddleName}" == searchTerm
+                        || $"{entry.FirstName} {entry.LastName}" == searchTerm
+                        || entry.FirstName == searchTerm || entry.MiddleName == searchTerm)
+                    {
+                        searchResult.Add(entry);
+                    }
+                }
+                AgentDataGrid.ItemsSource = searchResult;
+            }
+        }
     }
 }

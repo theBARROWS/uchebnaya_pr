@@ -35,6 +35,11 @@
             <Setter Property="Control.Foreground" Value="Black" />
             <Setter Property="Control.Margin" Value="15" />
         </Style>
+        <Style x:Key="paddingillusion2">
+            <Setter Property="Control.FontFamily" Value="Roboto" />
+            <Setter Property="Control.Foreground" Value="Black" />
+            <Setter Property="Control.Margin" Value="15 0 0 0" />
+        </Style>
 
         <Style x:Key="SmallButtonStyle" TargetType="Button">
             <Setter Property="Height" Value="24" />
@@ -76,7 +81,7 @@
 
         <Style x:Key="SmallTextBoxStyle" TargetType="TextBox">
             <Setter Property="Height" Value="24" />
-            <Setter Property="Padding" Value="10" />
+            <!--<Setter Property="Padding" Value="10" />-->
             <Setter Property="Margin" Value="15" />
         </Style>
 
@@ -202,6 +207,8 @@
                     <Border Grid.Column="1" BorderBrush="#b0bec5" Background="white" BorderThickness="1" CornerRadius="10" Margin="25" >
                         <StackPanel VerticalAlignment="Center">
                             <Label HorizontalAlignment="Center" Style="{StaticResource paddingillusion}" FontSize="16" FontWeight="ExtraBold">Недвижимость</Label>
+                            <Label Style="{StaticResource paddingillusion2}">Поиск</Label>
+                            <TextBox x:Name="SearchRealEstate" TextChanged="SearchRealEstate_TextChanged" Style="{StaticResource SmallTextBoxStyle}"></TextBox>
                             <Button Style="{StaticResource NormalButtonStyle}" Click="AddRealEstateButton_Click">Добавить</Button>
                             <Button Style="{StaticResource NormalButtonStyle}" Click="EditRealEstateButton_Click">Редактировать</Button>
                             <Button Style="{StaticResource NormalButtonStyle}" Click="DeleteRealEstateButton_Click">Удалить</Button>
@@ -240,6 +247,8 @@
                     <Border Grid.Column="1" BorderBrush="#b0bec5"  Background="white" BorderThickness="1" CornerRadius="10" Margin="25" >
                         <StackPanel VerticalAlignment="Center">
                             <Label HorizontalAlignment="Center" Style="{StaticResource paddingillusion}" FontSize="16" FontWeight="ExtraBold">Клиенты</Label>
+                            <Label Style="{StaticResource paddingillusion2}">Поиск</Label>
+                            <TextBox x:Name="SearchClient" TextChanged="SearchClient_TextChanged" Style="{StaticResource SmallTextBoxStyle}"></TextBox>
                             <Button Style="{StaticResource NormalButtonStyle}" Click="AddClientButton_Click">Добавить</Button>
                             <Button Style="{StaticResource NormalButtonStyle}" Click="EditClientButton_Click">Редактировать</Button>
                             <Button Style="{StaticResource NormalButtonStyle}" Click="DeleteClientButton_Click">Удалить</Button>
@@ -276,6 +285,8 @@
                     <Border Grid.Column="1" BorderBrush="#b0bec5"  Background="white" BorderThickness="1" CornerRadius="10" Margin="25" >
                         <StackPanel VerticalAlignment="Center">
                             <Label HorizontalAlignment="Center" Style="{StaticResource paddingillusion}" FontSize="16" FontWeight="ExtraBold">Агенты</Label>
+                            <Label Style="{StaticResource paddingillusion2}">Поиск</Label>
+                            <TextBox x:Name="SearchAgent" TextChanged="SearchAgent_TextChanged" Style="{StaticResource SmallTextBoxStyle}"></TextBox>
                             <Button Style="{StaticResource NormalButtonStyle}" Click="AddAgentButton_Click">Добавить</Button>
                             <Button Style="{StaticResource NormalButtonStyle}" Click="EditAgentButton_Click">Редактировать</Button>
                             <Button Style="{StaticResource NormalButtonStyle}" Click="DeleteAgentButton_Click">Удалить</Button>
