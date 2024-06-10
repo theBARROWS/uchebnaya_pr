@@ -43,12 +43,36 @@ namespace uchebnaya_pr
             var list = context.demands.Select(client => client.Id).ToList();
             return new ObservableCollection<int>(list);
         }
+        private ObservableCollection<string> GetSupplyCLFirstNames()
+        {
+            var list = context.supplies.Select(s => s.clients.FirstName).ToList();
+            return new ObservableCollection<string>(list);
+        }
+        private ObservableCollection<string> GetDemandsCLFirstNames()
+        {
+            var list = context.demands.Select(d=>d.clients.FirstName).ToList();
+            return new ObservableCollection<string>(list);
+        }
+
+        private int GetSupplyIdBySurname(string surname)
+        {
+            var supply = context.supplies.FirstOrDefault(s => s.clients.FirstName == surname);
+            return supply != null ? supply.Id : -1; // Return -1 if not found
+        }
+
+        private int GetDemandIdBySurname(string surname)
+        {
+            var demand = context.demands.FirstOrDefault(d => d.clients.FirstName == surname);
+            return demand != null ? demand.Id : -1; // Return -1 if not found
+        }
         public void LoadIds()
         {
             try
             {
-                deaslsIDsupply.ItemsSource = GetSupplyIds();
-                dealsIDdemand.ItemsSource = GetDemandsIds();
+                //deaslsIDsupply.ItemsSource = GetSupplyIds();
+                deaslsIDsupply.ItemsSource = GetSupplyCLFirstNames();
+                //dealsIDdemand.ItemsSource = GetDemandsIds();
+                dealsIDdemand.ItemsSource = GetDemandsCLFirstNames();
             }
             catch (Exception ex)
             {
@@ -92,8 +116,10 @@ namespace uchebnaya_pr
                 {
                     deals newdeal = new deals
                     {
-                        Demand_Id = Convert.ToInt32(dealsIDdemand.SelectedValue),
-                        Supply_Id = Convert.ToInt32(deaslsIDsupply.SelectedValue),
+                        Demand_Id = GetDemandIdBySurname(deaslsIDsupply.SelectedValue.ToString()),
+                        Supply_Id = GetSupplyIdBySurname(deaslsIDsupply.SelectedValue.ToString()),
+                        //Demand_Id = Convert.ToInt32(dealsIDdemand.SelectedValue),
+                        //Supply_Id = Convert.ToInt32(deaslsIDsupply.SelectedValue),
                     };
                     context.deals.Add(newdeal);
                     context.SaveChanges();
@@ -102,8 +128,10 @@ namespace uchebnaya_pr
                 else if (operationType == OperationType.Edit)
                 {
                     deals dealtoUpdate = context.deals.Find(editeddeal.Id);
-                    dealtoUpdate.Demand_Id = Convert.ToInt32(dealsIDdemand.SelectedValue);
-                    dealtoUpdate.Supply_Id = Convert.ToInt32(deaslsIDsupply.SelectedValue);
+                    //dealtoUpdate.Demand_Id = Convert.ToInt32(dealsIDdemand.SelectedValue);
+                    //dealtoUpdate.Supply_Id = Convert.ToInt32(deaslsIDsupply.SelectedValue);
+                    dealtoUpdate.Demand_Id = GetDemandIdBySurname(deaslsIDsupply.SelectedValue.ToString());
+                    dealtoUpdate.Supply_Id = GetSupplyIdBySurname(deaslsIDsupply.SelectedValue.ToString());
 
                     context.SaveChanges();
                     var list = context.deals.ToList();

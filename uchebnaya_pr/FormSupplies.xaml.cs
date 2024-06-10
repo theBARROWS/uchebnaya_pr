@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -43,18 +44,70 @@ namespace uchebnaya_pr
             var list = context.agents.Select(client => client.Id).ToList();
             return new ObservableCollection<int>(list);
         }
-        private ObservableCollection<int> GetREIds()
+        private ObservableCollection<string> GetREIds()
         {
-            var list = context.realEstate.Select(client => client.Id).ToList();
-            return new ObservableCollection<int>(list);
+            var list = context.realEstate.Select(d =>
+        $"{d.Address_City}, {d.Address_Street}, {d.Address_House} {d.Address_Number}").ToList();
+            return new ObservableCollection<string>(list);
         }
+
+
+
+        private ObservableCollection<string> GetCLFIRSTNAME()
+        {
+            var list = context.clients.Select(d => d.FirstName).ToList();
+            return new ObservableCollection<string>(list);
+        }
+
+        private ObservableCollection<string> GetAGENTFIRSTNAME()
+        {
+            var list = context.agents.Select(d => d.FirstName).ToList();
+            return new ObservableCollection<string>(list);
+        }
+        private ObservableCollection<string> GetRESTATESADDRESS()
+        {
+            //    var list = context.realEstate.Select(d =>
+            //$"{d.Address_City}, {d.Address_Street}, {d.Address_House} {d.Address_Number}").ToList();
+            //    return new ObservableCollection<string>(list);
+            var list = context.realEstate.ToList();
+            var formattedList = list.Select(d => $"{d.Address_City}, {d.Address_Street}, {d.Address_House} {d.Address_Number}").ToList();
+            return new ObservableCollection<string>(formattedList);
+
+        }
+
+        private int GetClientIdBYFIRSTNAME(string surname)
+        {
+            var supply = context.clients.FirstOrDefault(s => s.FirstName == surname);
+            return supply != null ? supply.Id : -1; // Return -1 if not found
+        }
+
+        private int GetAgentIdBYFIRSTNAME(string surname)
+        {
+            var supply = context.agents.FirstOrDefault(s => s.FirstName == surname);
+            return supply != null ? supply.Id : -1; // Return -1 if not found
+        }
+        private int GetREbyAddress(string surname)
+        {
+            var supply = context.realEstate.FirstOrDefault(s =>
+    (s.Address_City + ", " + s.Address_Street + ", " + s.Address_House + " " + s.Address_Number) == surname);
+            return supply != null ? supply.Id : -1; // Return -1 if not found
+            //var supply = context.realEstate.FirstOrDefault(s => $"{s.Address_City}, {s.Address_Street}, {s.Address_House} {s.Address_Number}" == surname);
+            //return supply != null ? supply.Id : -1; // Return -1 if not found
+        }
+
         public void LoadIds()
         {
             try
             {
-                suppliesAGID.ItemsSource = GetAgentIds();
-                suppliesCLID.ItemsSource = GetClientIds();
-                suppliesREID.ItemsSource = GetREIds();
+                //suppliesAGID.ItemsSource = GetAgentIds();
+                //suppliesCLID.ItemsSource = GetClientIds();
+                //suppliesREID.ItemsSource = GetREIds();
+
+                suppliesAGID.ItemsSource = GetAGENTFIRSTNAME();
+                suppliesCLID.ItemsSource = GetCLFIRSTNAME();
+                suppliesREID.ItemsSource = GetRESTATESADDRESS();
+
+                //demandClientId.ItemsSource = GetDemandsCLFirstNames();
             }
             catch (Exception ex)
             {
@@ -81,9 +134,9 @@ namespace uchebnaya_pr
             suppliesCLID.IsEnabled = false;
             suppliesREID.IsEnabled = false;
 
-            suppliesAGID.SelectedIndex = supply.AgentId;
-            suppliesCLID.SelectedIndex = supply.ClientId;
-            suppliesREID.SelectedIndex = supply.RealEstateId;
+            suppliesAGID.SelectedItem = supply.agents.FirstName;
+            suppliesCLID.SelectedItem = supply.clients.FirstName;
+            suppliesREID.SelectedIndex = supply.RealEstateId-1;
 
             priceTB.Text = supply.Price.ToString();
         }
@@ -112,9 +165,14 @@ namespace uchebnaya_pr
                 {
                     supplies newsupply = new supplies
                     {
-                        ClientId = Convert.ToInt32(suppliesCLID.SelectedValue),
-                        AgentId = Convert.ToInt32(suppliesAGID.SelectedValue),
-                        RealEstateId = Convert.ToInt32(suppliesREID.SelectedValue),
+                        //ClientId = Convert.ToInt32(suppliesCLID.SelectedValue),
+                        ClientId = GetClientIdBYFIRSTNAME(suppliesCLID.SelectedValue.ToString()),
+
+                        AgentId = GetAgentIdBYFIRSTNAME(suppliesAGID.SelectedValue.ToString()),
+
+                        RealEstateId = GetREbyAddress(suppliesREID.SelectedValue.ToString()),
+                        //AgentId = Convert.ToInt32(suppliesAGID.SelectedValue),
+                        //RealEstateId = Convert.ToInt32(suppliesREID.SelectedValue),
 
                         Price = Convert.ToInt32(priceTB.Text)
                     };
@@ -138,6 +196,10 @@ namespace uchebnaya_pr
             {
                 MessageBox.Show("Введите все данные!");
             }
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("Error: " + ex.Message);
+            //}
         }
     }
 }

@@ -70,6 +70,20 @@ namespace uchebnaya_pr
                 MessageBox.Show("Номер телефона должен содержать только цифры.");
                 return;
             }
+
+            if (string.IsNullOrWhiteSpace(emailTextBox.Text) && phoneTextBox.Text.Length < 11)
+            {
+                MessageBox.Show("Номер телефона должен содержать 11 цифр.");
+                return;
+            }
+
+            string pattern = @"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$";
+            if ((string.IsNullOrWhiteSpace(phoneTextBox.Text) && !System.Text.RegularExpressions.Regex.IsMatch(emailTextBox.Text, pattern)))
+            {
+                MessageBox.Show("Введите корректный имейл");
+                return;
+            }
+
             if (operationType == OperationType.Add)
             {
 

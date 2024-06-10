@@ -52,17 +52,17 @@ namespace uchebnaya_pr
         }
         private ObservableCollection<demands> GetDemands()
         {
-            var list = context.demands.ToList();
+            var list = context.demands.Include(d=>d.clients).ToList();
             return new ObservableCollection<demands>(list);
         }
         private ObservableCollection<supplies> GetSupplies()
         {
-            var list = context.supplies.ToList();
+            var list = context.supplies.Include(s=>s.agents).Include(s=>s.clients).Include(s=>s.realEstate).ToList();
             return new ObservableCollection<supplies>(list);
         }
         private ObservableCollection<deals> GetDeals()
         {
-            var list = context.deals.ToList();
+            var list = context.deals.Include(d=>d.supplies.realEstate).Include(d=>d.supplies.clients).Include(d => d.supplies.agents).Include(d=>d.demands.clients).ToList();
             return new ObservableCollection<deals>(list);
         }
 

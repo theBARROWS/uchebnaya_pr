@@ -43,7 +43,7 @@ namespace UCH_PR
             try
             {
 
-                demandClientId.ItemsSource = GetClientIds();
+                demandClientId.ItemsSource = GetDemandsCLFirstNames();
             }
             catch (Exception ex)
             {
@@ -69,7 +69,7 @@ namespace UCH_PR
             demandClientId.IsEnabled= false;
             demandrType.IsEnabled=false;
 
-            demandClientId.SelectedItem = demand.ClientId;
+            demandClientId.SelectedItem = demand.clients.FirstName;
 
             if (demand.TypeId == 1) demandrType.SelectedIndex = 0;
             else if (demand.TypeId == 2) demandrType.SelectedIndex = 1;
@@ -93,6 +93,18 @@ namespace UCH_PR
         {
             var list = context.demands.ToList();
             return new ObservableCollection<demands>(list);
+        }
+
+        private ObservableCollection<string> GetDemandsCLFirstNames()
+        {
+            var list = context.clients.Select(d => d.FirstName).ToList();
+            return new ObservableCollection<string>(list);
+        }
+
+        private int GetClientIdBySurname(string surname)
+        {
+            var client = context.clients.FirstOrDefault(s => s.FirstName == surname);
+            return client != null ? client.Id : -1; // Return -1 if not found
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -199,7 +211,9 @@ namespace UCH_PR
                 {
                     demands newdemand = new demands
                     {
-                        ClientId = Convert.ToInt32(demandClientId.SelectedValue),
+                        //ClientId = Convert.ToInt32(demandClientId.SelectedValue),
+                        ClientId=GetClientIdBySurname(demandClientId.SelectedValue.ToString()),
+                        //Supply_Id = GetSupplyIdBySurname(deaslsIDsupply.SelectedValue.ToString()),
                         TypeId = demandrType.SelectedIndex + 1,
                         Address_City = realEstateCity.Text,
                         Address_House = realEstateHouse.Text,
@@ -222,8 +236,10 @@ namespace UCH_PR
                 else if (operationType == OperationType.Edit)
                 {
                     demands demandToUpdate = context.demands.Find(editedEstate.Id);
-                    demandToUpdate.ClientId = Convert.ToInt32(demandClientId.SelectedValue);
-                        demandToUpdate.TypeId = demandrType.SelectedIndex + 1;
+                    //demandToUpdate.ClientId = Convert.ToInt32(demandClientId.SelectedValue);
+
+                    demandToUpdate.ClientId = GetClientIdBySurname(demandClientId.SelectedValue.ToString());
+                    demandToUpdate.TypeId = demandrType.SelectedIndex + 1;
                         demandToUpdate.Address_City = realEstateCity.Text;
                         demandToUpdate.Address_House = realEstateHouse.Text;
                         demandToUpdate.Address_Number = realEstateNumber.Text;

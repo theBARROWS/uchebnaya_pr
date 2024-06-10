@@ -241,7 +241,7 @@
                         <StackPanel VerticalAlignment="Center">
                             <Label HorizontalAlignment="Center" Style="{StaticResource paddingillusion}" FontSize="16" FontWeight="ExtraBold">Недвижимость</Label>
                             <Label Style="{StaticResource paddingillusion2}">Поиск</Label>
-                            <TextBox x:Name="SearchRealEstate" TextChanged="SearchRealEstate_TextChanged" Style="{StaticResource SmallTextBoxStyle}"></TextBox>
+                            <TextBox x:Name="SearchRealEstate" MaxLength="50" TextChanged="SearchRealEstate_TextChanged" Style="{StaticResource SmallTextBoxStyle}"></TextBox>
                             <Button Style="{StaticResource NormalButtonStyle}" Click="AddRealEstateButton_Click">Добавить</Button>
                             <Button Style="{StaticResource NormalButtonStyle}" Click="EditRealEstateButton_Click">Редактировать</Button>
                             <Button Style="{StaticResource NormalButtonStyle}" Click="DeleteRealEstateButton_Click">Удалить</Button>
@@ -281,7 +281,7 @@
                         <StackPanel VerticalAlignment="Center">
                             <Label HorizontalAlignment="Center" Style="{StaticResource paddingillusion}" FontSize="16" FontWeight="ExtraBold">Клиенты</Label>
                             <Label Style="{StaticResource paddingillusion2}">Поиск</Label>
-                            <TextBox x:Name="SearchClient" TextChanged="SearchClient_TextChanged" Style="{StaticResource SmallTextBoxStyle}"></TextBox>
+                            <TextBox x:Name="SearchClient" MaxLength="50" TextChanged="SearchClient_TextChanged" Style="{StaticResource SmallTextBoxStyle}"></TextBox>
                             <Button Style="{StaticResource NormalButtonStyle}" Click="AddClientButton_Click">Добавить</Button>
                             <Button Style="{StaticResource NormalButtonStyle}" Click="EditClientButton_Click">Редактировать</Button>
                             <Button Style="{StaticResource NormalButtonStyle}" Click="DeleteClientButton_Click">Удалить</Button>
@@ -319,7 +319,7 @@
                         <StackPanel VerticalAlignment="Center">
                             <Label HorizontalAlignment="Center" Style="{StaticResource paddingillusion}" FontSize="16" FontWeight="ExtraBold">Агенты</Label>
                             <Label Style="{StaticResource paddingillusion2}">Поиск</Label>
-                            <TextBox x:Name="SearchAgent" TextChanged="SearchAgent_TextChanged" Style="{StaticResource SmallTextBoxStyle}"></TextBox>
+                            <TextBox x:Name="SearchAgent" MaxLength="50" TextChanged="SearchAgent_TextChanged" Style="{StaticResource SmallTextBoxStyle}"></TextBox>
                             <Button Style="{StaticResource NormalButtonStyle}" Click="AddAgentButton_Click">Добавить</Button>
                             <Button Style="{StaticResource NormalButtonStyle}" Click="EditAgentButton_Click">Редактировать</Button>
                             <Button Style="{StaticResource NormalButtonStyle}" Click="DeleteAgentButton_Click">Удалить</Button>
@@ -346,9 +346,14 @@
 
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="ID" MinWidth="50" Width="*" Binding="{Binding Id}" />
-                            <DataGridTextColumn Header="ID недвижимости" MinWidth="50" Width="*" Binding="{Binding RealEstateId}" />
-                            <DataGridTextColumn Header="ID агента" MinWidth="50" Width="*" Binding="{Binding AgentId}" />
-                            <DataGridTextColumn Header="ID клиента" MinWidth="50" Width="*" Binding="{Binding ClientId}" />
+                            <DataGridTextColumn Header="Город" MinWidth="50" Width="*" Binding="{Binding realEstate.Address_City}" />
+                            <DataGridTextColumn Header="Улица" MinWidth="50" Width="*" Binding="{Binding realEstate.Address_Street}" />
+                            <DataGridTextColumn Header="Дом" MinWidth="50" Width="*" Binding="{Binding realEstate.Address_House}" />
+                            <DataGridTextColumn Header="Квартира" MinWidth="50" Width="*" Binding="{Binding realEstate.Address_Number}" />
+                            <DataGridTextColumn Header="Фамилия агента" MinWidth="50" Width="*" Binding="{Binding agents.FirstName}" />
+                            <!--<DataGridTextColumn Header="Имя агента" MinWidth="50" Width="*" Binding="{Binding agents.MiddleName}" />-->
+                            <DataGridTextColumn Header="Фамилия клиента" MinWidth="50" Width="*" Binding="{Binding clients.FirstName}" />
+                            <!--<DataGridTextColumn Header="Имя клиента" MinWidth="50" Width="*" Binding="{Binding clients.MiddleName}" />-->
                             <DataGridTextColumn Header="Цена" MinWidth="50" Width="*" Binding="{Binding Price}" />
                         </DataGrid.Columns>
 
@@ -380,7 +385,9 @@
                                AlternatingRowBackground="#F7F9F9">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="ID" MinWidth="20" Width="*" Binding="{Binding Id}" />
-                            <DataGridTextColumn Header="Клиент" MinWidth="50" Width="*" Binding="{Binding ClientId}" />
+                            <!--<DataGridTextColumn Header="Клиент" MinWidth="50" Width="*" Binding="{Binding ClientId}" />-->
+
+                            <DataGridTextColumn Header="Клиент" MinWidth="50" Width="*" Binding="{Binding clients.FirstName}" />
                             <DataGridTextColumn Header="Тип" MinWidth="30" Width="*" Binding="{Binding type.Name}" />
                             <DataGridTextColumn Header="Город" MinWidth="50" Width="*" Binding="{Binding Address_City}" />
                             <DataGridTextColumn Header="Улица" MinWidth="50" Width="*" Binding="{Binding Address_Street}" />
@@ -392,7 +399,7 @@
                             <DataGridTextColumn Header="Макс. км" MinWidth="20" Width="*" Binding="{Binding MaxRooms}" />
                             <DataGridTextColumn Header="Мин. пл" MinWidth="20" Width="*" Binding="{Binding MinArea}" />
                             <DataGridTextColumn Header="Макс. пл" MinWidth="20" Width="*" Binding="{Binding MaxArea}" />
-                            <DataGridTextColumn Header="Мин. цена" MinWidth="20" Width="*" Binding="{Binding MinPrice}" />
+                            <!--<DataGridTextColumn Header="Мин. цена" MinWidth="20" Width="*" Binding="{Binding MinPrice}" />-->
                             <DataGridTextColumn Header="Макс. цена" MinWidth="20" Width="*" Binding="{Binding MaxPrice}" />
                         </DataGrid.Columns>
 
@@ -426,8 +433,15 @@
 
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="ID" MinWidth="50" Width="*" Binding="{Binding Id}" />
-                            <DataGridTextColumn Header="ID потребности" MinWidth="50" Width="*" Binding="{Binding Demand_Id}" />
-                            <DataGridTextColumn Header="ID предложения" MinWidth="50" Width="*" Binding="{Binding Supply_Id}" />
+                            <DataGridTextColumn Header="Город" MinWidth="50" Width="*" Binding="{Binding supplies.realEstate.Address_City}" />
+                            <DataGridTextColumn Header="Улица" MinWidth="50" Width="*" Binding="{Binding supplies.realEstate.Address_Street}" />
+                            <DataGridTextColumn Header="Дом" MinWidth="50" Width="*" Binding="{Binding supplies.realEstate.Address_House}" />
+                            <DataGridTextColumn Header="Квартира" MinWidth="50" Width="*" Binding="{Binding supplies.realEstate.Address_Number}" />
+                            <DataGridTextColumn Header="Агент" MinWidth="50" Width="*" Binding="{Binding supplies.agents.FirstName}" />
+                            <DataGridTextColumn Header="Потреб-клиент" MinWidth="50" Width="*" Binding="{Binding demands.clients.FirstName}" />
+                            <DataGridTextColumn Header="Предл-клиент" MinWidth="50" Width="*" Binding="{Binding supplies.clients.FirstName}" />
+                            <DataGridTextColumn Header="Цена" MinWidth="50" Width="*" Binding="{Binding supplies.Price}" />
+                            <!--<DataGridTextColumn Header="ID потребности" MinWidth="50" Width="*" Binding="{Binding demands.clients.MiddleName}" />-->
                         </DataGrid.Columns>
                     </DataGrid>
                     <Border Grid.Column="1" BorderBrush="#b0bec5"  Background="white" BorderThickness="1" CornerRadius="10" Margin="25" >
