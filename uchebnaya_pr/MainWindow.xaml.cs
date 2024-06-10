@@ -92,11 +92,18 @@ namespace uchebnaya_pr
                 if (selectedItem != null)
                 {
                     clients client = (clients)ClientDataGrid.SelectedItem;
-                    //DataGrid.Items.Remove(selectedItem);
-                    context.clients.Remove(client);
-                    context.SaveChanges();
+                    if ((client.supplies != null && client.supplies.Any()) || (client.demands != null && client.demands.Any()))
+                    {
+                        MessageBox.Show("Этого клиента нельзя удалять, так как он уже связан со сделкой.");
+                    }
+                    else
+                    {
+                        //DataGrid.Items.Remove(selectedItem);
+                        context.clients.Remove(client);
+                        context.SaveChanges();
 
-                    LoadData();
+                        LoadData();
+                    }
                 }
             }
             catch
@@ -155,11 +162,18 @@ namespace uchebnaya_pr
                 if (selectedItem != null)
                 {
                     realEstate realEstate = (realEstate)RealEstateDataGrid.SelectedItem;
-                    //DataGrid.Items.Remove(selectedItem);
-                    context.realEstate.Remove(realEstate);
-                    context.SaveChanges();
+                    if ((realEstate.supplies != null && realEstate.supplies.Any()))
+                    {
+                        MessageBox.Show("Этого клиента нельзя удалять, так как он уже связан со сделкой.");
+                    }
+                    else
+                    {
+                        //DataGrid.Items.Remove(selectedItem);
+                        context.realEstate.Remove(realEstate);
+                        context.SaveChanges();
 
-                    LoadData();
+                        LoadData();
+                    }
                 }
             }
             catch
@@ -192,15 +206,22 @@ namespace uchebnaya_pr
             try
             {
                 var selectedItem = AgentDataGrid.SelectedItem;
-                if (selectedItem != null)
+            if (selectedItem != null)
+            {
+                agents agent = (agents)AgentDataGrid.SelectedItem;
+                if ((agent.supplies != null && agent.supplies.Any()))
                 {
-                    agents agent = (agents)AgentDataGrid.SelectedItem;
+                    MessageBox.Show("Этого агент нельзя удалять, так как он уже связан.");
+                }
+                else
+                {
                     //DataGrid.Items.Remove(selectedItem);
                     context.agents.Remove(agent);
                     context.SaveChanges();
 
                     LoadData();
                 }
+            }
             }
             catch
             {
@@ -241,11 +262,22 @@ namespace uchebnaya_pr
                 if (selectedItem != null)
                 {
                     supplies sypply = (supplies)SuppliesDataGrid.SelectedItem;
-                    //DataGrid.Items.Remove(selectedItem);
-                    context.supplies.Remove(sypply);
-                    context.SaveChanges();
+                    if (sypply.deals != null && sypply.deals.Any())
+                    {
+                        MessageBox.Show("Это предложение нельзя удалить, так как оно уже связано со сделкой.");
+                    }
+                    else
+                    {
+                        //DataGrid.Items.Remove(selectedItem);
+                        context.supplies.Remove(sypply);
+                        context.SaveChanges();
 
-                    LoadData();
+                        LoadData();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Выберите предложение для удаления.");
                 }
             }
             catch
@@ -287,11 +319,18 @@ namespace uchebnaya_pr
                 if (selectedItem != null)
                 {
                     demands demand = (demands)DemandDataGrid.SelectedItem;
-                    //DataGrid.Items.Remove(selectedItem);
-                    context.demands.Remove(demand);
-                    context.SaveChanges();
+                    if (demand.deals != null && demand.deals.Any())
+                    {
+                        MessageBox.Show("Эту потребность нельзя удалить, так как она уже связана со сделкой.");
+                    }
+                    else
+                    {
+                        //DataGrid.Items.Remove(selectedItem);
+                        context.demands.Remove(demand);
+                        context.SaveChanges();
 
-                    LoadData();
+                        LoadData();
+                    }
                 }
             }
             catch

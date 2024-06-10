@@ -98,8 +98,9 @@ namespace uchebnaya_pr
             //suppliesAGID.IsEnabled = false;
             //suppliesCLID.IsEnabled = false;
 
-            deaslsIDsupply.SelectedIndex = deal.Supply_Id-1;
-            dealsIDdemand.SelectedIndex = deal.Demand_Id-1;
+            deaslsIDsupply.SelectedItem = deal.supplies.clients.FirstName;
+            dealsIDdemand.SelectedItem = deal.demands.clients.FirstName;
+            //dealsIDdemand.SelectedIndex = deal.Demand_Id-1;
 
         }
         private ObservableCollection<deals> GetRealEstates()
@@ -110,13 +111,13 @@ namespace uchebnaya_pr
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
+            //try
+            //{
                 if (operationType == OperationType.Add)
                 {
                     deals newdeal = new deals
                     {
-                        Demand_Id = GetDemandIdBySurname(deaslsIDsupply.SelectedValue.ToString()),
+                        Demand_Id = GetDemandIdBySurname(dealsIDdemand.SelectedValue.ToString()),
                         Supply_Id = GetSupplyIdBySurname(deaslsIDsupply.SelectedValue.ToString()),
                         //Demand_Id = Convert.ToInt32(dealsIDdemand.SelectedValue),
                         //Supply_Id = Convert.ToInt32(deaslsIDsupply.SelectedValue),
@@ -130,7 +131,7 @@ namespace uchebnaya_pr
                     deals dealtoUpdate = context.deals.Find(editeddeal.Id);
                     //dealtoUpdate.Demand_Id = Convert.ToInt32(dealsIDdemand.SelectedValue);
                     //dealtoUpdate.Supply_Id = Convert.ToInt32(deaslsIDsupply.SelectedValue);
-                    dealtoUpdate.Demand_Id = GetDemandIdBySurname(deaslsIDsupply.SelectedValue.ToString());
+                    dealtoUpdate.Demand_Id = GetDemandIdBySurname(dealsIDdemand.SelectedValue.ToString());
                     dealtoUpdate.Supply_Id = GetSupplyIdBySurname(deaslsIDsupply.SelectedValue.ToString());
 
                     context.SaveChanges();
@@ -139,11 +140,11 @@ namespace uchebnaya_pr
                 }
 
                 this.Close();
-            }
-            catch
-            {
-                MessageBox.Show("Введите все данные!");
-            }
+            //}
+            //catch
+            //{
+            //    MessageBox.Show("Введите все данные!");
+            //}
         }
     }
 }
